@@ -1,16 +1,23 @@
 import React from "react";
-
-// Component du Header (Logo + filtre inc)
-import { useLocation } from "react-router-dom";
-
+import logo from "../assets/logo.png"
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import { MoneyBonus } from "./Money";
+// Component du Header (Logo + filtre + search inc)
 
 const Header: React.FC = () => {
   return (
-    <div>
-      {/*
-        Mettre la navbar
-      */}
-    </div>
+    // utilisation de header pour la seo
+    <header className=" relative w-full flex flex-row items-center bg-grey border-b-2  overflow-hidden p-1">
+      { /*<MoneyBonus />  désativer parce que c pas stable*/ }
+      <div className="flex-1 flex justify-center items-center">
+        <ManageSearchIcon  fontSize="large" className="text-red" />
+      </div>
+      <div className="flex-1 flex justify-center items-center h-12">
+        <img src={logo} alt="Logo" className="h-full w-auto " />
+      </div>
+      <div className="flex-1">
+      </div>
+    </header>
   );
-}
+};
 export default Header;

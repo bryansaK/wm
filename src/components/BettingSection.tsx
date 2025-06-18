@@ -27,13 +27,13 @@ const BettingSection: React.FC<BettingSectionProps> = ({
         >
           {outcomes.map((outcome, index) => (
             <div
-              key={index}
+              key={outcome.outcomeId}
               className={`${
                 outcomes.length === 2 ? "w-[45%]" : "w-[30%]"
-              } min-h-[60px] flex flex-col justify-between rounded-xl bg-grey text-center text-[12px] p-1`}
+              } min-h-[60px] flex flex-col justify-between rounded-xl bg-grey text-center text-[12px] p-1 hover:bg-red active:bg-red hover:text-white active:text-white group`}
             >
-              <div className="break-words">{outcome.label}</div>
-              <div className="text-darkRed text-[20px]">{outcome.odds}</div>
+              <div className="break-words ">{outcome.label}</div>
+              <div className="text-darkRed font-extrabold text-[20px] group-hover:text-white group-active:text-white">{outcome.odds}</div>
             </div>
           ))}
         </div>

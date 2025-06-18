@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
       <Header></Header>
       <div>
         {paginatedData.map((elem, index) => (
-          <div className="mt-3">
+          <div className="mt-3 pb-5">
           <Card
             date={elem.startDate}
             isTop={elem.hot ? true : false}

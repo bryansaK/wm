@@ -1,25 +1,47 @@
+import { BettingContext } from "App";
 import Card from "components/Card";
 import Header from "components/Header";
+import { Betting } from "interfaces/betting";
 import { imagesFlag, imagesSport } from "interfaces/enum";
-import React from "react";
-
-// Page pour la HomePage
-import { useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 
 const HomePage: React.FC = () => {
+  const bettingData = useContext(BettingContext);
+  const [paginatedData, setPaginatedDate] = useState<Betting[]>([]);
+
+  useEffect(() => {
+    paginationBy20();
+  }, [bettingData?.filters.pagination]);
+
+  if (!bettingData) {
+    return <div>Loading...</div>;
+  }
+
+  const paginationBy20 = (): void => {
+    const pagination = bettingData.filters.pagination ?? 0;
+    setPaginatedDate(
+      bettingData.bettingData.slice(pagination, pagination + 20)
+    );
+  };
+
   return (
-    <div className="h-screen">
-      <Header />
-      <div className="mt-2">
-        <Card
-          isTop
-          flagIcon={imagesFlag["FR"]}
-          sportsIcon={imagesSport["IceHockey"]}
-          tournamentName="Champions League"
-          outcomes={[]}
-          p1="Team A"
-          p2="Team B"
-        />
+    <div>
+      <Header></Header>
+      <div>
+        {paginatedData.map((elem, index) => (
+          <div className="mt-3">
+          <Card
+            date={elem.startDate}
+            isTop={elem.hot ? true : false}
+            flagIcon={elem.flag ? imagesFlag[elem.flag] : null}
+            sportsIcon={imagesSport[elem.sportName]}
+            tournamentName={elem.tournamentName}
+            outcomes={elem.outcomes}
+            p1={elem.competitor1Name}
+            p2={elem.competitor2Name}
+          />
+          </div>
+        ))}
       </div>
     </div>
   );

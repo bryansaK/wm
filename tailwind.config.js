@@ -7,6 +7,7 @@ module.exports = {
         grey: "#F0F1F5",
         yellow: "#FFBF00",
         red: "#F20D0D",
+        darkRed: "#AA0909"
       },
       fontFamily: {
         sans: ["ArchivoNarrow", "sans-serif"],

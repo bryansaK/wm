@@ -23,4 +23,4 @@ Utilisation de mui pour les icons
 
 # Optimisation
 
-# ne pas oublier de convertir les png en tiny png et d'ajouet les commentarires par rapport au fonts
+# ne pas oublier de convertir les png en tiny png et d'ajouet les commentarires par rapport au fonts + expliquer le date Utils

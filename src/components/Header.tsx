@@ -7,7 +7,7 @@ import { MoneyBonus } from "./Money";
 const Header: React.FC = () => {
   return (
     // utilisation de header pour la seo
-    <header className="sticky top-0 z-5 relative w-full flex flex-row items-center bg-grey border-b-2  overflow-hidden p-1">
+    <header className="sticky top-0 z-50 relative w-full flex flex-row items-center bg-grey border-b-2  overflow-hidden p-1">
       { /*<MoneyBonus />  désativer parce que c pas stable*/ }
       <div className="flex-1 flex justify-center items-center">
         <ManageSearchIcon  fontSize="large" className="text-red" />

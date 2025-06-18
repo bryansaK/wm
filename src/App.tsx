@@ -11,7 +11,7 @@ export const BettingContext = createContext<BettingContextType | null>(null);
 function App() {
   const [filters, setFilters] = useState<Filters>({
     sport: undefined,
-    pagination: undefined,
+    pagination: 0,
     desc:  undefined,
     search: undefined,
     country: undefined,

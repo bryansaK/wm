@@ -15,6 +15,7 @@ export interface Betting {
   competitor2Flag: string | null;
   startDate: string;
   outcomes: Outcome[];
+  hot?: boolean;
 }
 
 export interface Filters {

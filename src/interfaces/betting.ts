@@ -16,3 +16,17 @@ export interface Betting {
   startDate: string;
   outcomes: Outcome[];
 }
+
+export interface Filters {
+  sport?: string;
+  pagination? : number;
+  desc?: boolean;
+  search?: string;
+  country?: string;
+}
+
+export interface BettingContextType {
+  bettingData: Betting[];
+  filters: Filters;
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+}

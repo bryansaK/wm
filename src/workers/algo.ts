@@ -9,6 +9,7 @@ self.onmessage = (event) => {
 
     const totalMatches = matches.length;
 
+    //les 3 boucles sont nécéssaires pour tester toutes les combi si un gros for alors seulement les consécutifs
     // Boucle sur le 1er match
     for (let i = 0; i < totalMatches - 2; i++) {
         // Boucle sur le 2e match (différent du 1er)
@@ -52,7 +53,6 @@ self.onmessage = (event) => {
     worker.postMessage({ matches, min, max });
 
     worker.onmessage = (event) => {
-      console.log('✔️ Résultats trouvés :', event.data);
     };
   }, []); */
 };

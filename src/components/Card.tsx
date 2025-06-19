@@ -45,7 +45,7 @@ const Card: React.FC<CardProps> = ({
                   sportIcon={sportsIcon ? sportsIcon: null}
                   flagIcon={flagIcon ? flagIcon : null}
                 />
-                <span className="ml-3 breakword">{tournamentName ? tournamentName : "Win un max de thune"}</span>
+                <span className="ml-3 max-w-[150px] breakword">{tournamentName ? tournamentName : "Win un max de thune"}</span>
               </div>
           </div>
           <div className="mr-3 mt-1">{formatRelativeDate(date)}</div>

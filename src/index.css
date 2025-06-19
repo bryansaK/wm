@@ -38,3 +38,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiPaginationItem-root.Mui-selected {
+  background-color: #ef4444 !important; /* Tailwind's bg-red-500 */
+  color: #fff !important;               /* Tailwind's text-white */
+}

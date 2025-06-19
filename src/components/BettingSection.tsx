@@ -13,7 +13,7 @@ const BettingSection: React.FC<BettingSectionProps> = ({
   outcomes,
 }) => {
   return (
-    <div className="w-full mt-2 p-2">
+    <div className="w-full mt-2 p-2 pb-3">
       <div className="text-center m-auto">
         <p className="text-[18px] font-extrabold">
           {p1} - {p2}

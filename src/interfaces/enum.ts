@@ -34,6 +34,11 @@ export enum CardLabel {
     TOP = "TOP PARIS 🔥",
 }
 
+export enum TabLabel {
+    HOME = "Home",
+    README = "Readme"
+}
+
 export const imagesSport: Record<string, string> = {
     Soccer,
     IceHockey,

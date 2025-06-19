@@ -5,6 +5,8 @@ import HomePage from "pages/HomePage";
 import { createContext, useEffect, useState } from "react";
 import { Betting, BettingContextType, Filters } from "interfaces/betting";
 import bettingData from "./json/sample-betting.json";
+import Header from "components/Header";
+import Navbar from "components/NavBar";
 
 export const BettingContext = createContext<BettingContextType | null>(null);
 
@@ -12,7 +14,7 @@ function App() {
   const [filters, setFilters] = useState<Filters>({
     sport: undefined,
     pagination: 0,
-    desc:  undefined,
+    desc: undefined,
     search: undefined,
     country: undefined,
   });
@@ -20,10 +22,12 @@ function App() {
   return (
     <BettingContext.Provider value={{ bettingData, filters, setFilters }}>
       <div>
+        <Header></Header>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" />
+          <Route path="/readme" />
         </Routes>
+        <Navbar></Navbar>
       </div>
     </BettingContext.Provider>
   );

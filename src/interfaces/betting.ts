@@ -24,6 +24,13 @@ export interface Filters {
   desc?: boolean;
   search?: string;
   country?: string;
+  minCote: number;
+  maxCote: number;
+  isActive: boolean;
+}
+
+export interface MatchedBetting {
+  bets: Betting[]
 }
 
 export interface BettingContextType {

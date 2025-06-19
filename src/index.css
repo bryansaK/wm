@@ -40,6 +40,6 @@ code {
 }
 
 .MuiPaginationItem-root.Mui-selected {
-  background-color: #ef4444 !important; /* Tailwind's bg-red-500 */
-  color: #fff !important;               /* Tailwind's text-white */
+  background-color: #ef4444 !important;
+  color: #fff !important;               
 }

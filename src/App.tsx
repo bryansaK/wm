@@ -17,6 +17,9 @@ function App() {
     desc: undefined,
     search: undefined,
     country: undefined,
+    minCote: 0,
+    maxCote: 200,
+    isActive: false
   });
 
   return (

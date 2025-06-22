@@ -1,36 +1,33 @@
-self.onmessage = (event) => {
-    const { matches, min, max } = event.data;
+import { filteredMatches } from "interfaces/betting";
 
-    const result: {
-        matches: [number, number, number];
-        cotes: [number, number, number];
-        coteFinale: number;
-    }[] = [];
+/* eslint-disable no-restricted-globals */
+self.onmessage = (event) => {
+    const { matches, min, max, start = 0, limit = 20 } = event.data;
+    const result: filteredMatches[] = [];
 
     const totalMatches = matches.length;
 
-    //les 3 boucles sont nécéssaires pour tester toutes les combi si un gros for alors seulement les consécutifs
-    // Boucle sur le 1er match
     for (let i = 0; i < totalMatches - 2; i++) {
-        // Boucle sur le 2e match (différent du 1er)
         for (let j = i + 1; j < totalMatches - 1; j++) {
-            // Boucle sur le 3e match (différent des 2 premiers)
             for (let k = i + 2; k < totalMatches; k++) {
-                const matchA = matches[i];
-                const matchB = matches[j];
-                const matchC = matches[k];
-
-                // Outcomes numéro 2
+                const matchA = matches[i].outcomes;
+                const matchB = matches[j].outcomes;
+                const matchC = matches[k].outcomes;
+                const matchAId = matches[i].matchId;
+                const matchBId = matches[j].matchId;
+                const matchCId = matches[k].matchId;
+                const matchAName = matches[i].tournamentName;
+                const matchBName = matches[j].tournamentName;
+                const matchCName = matches[k].tournamentName;
                 for (const coteA of matchA) {
-                    // Outcomes numéro 2
                     for (const coteB of matchB) {
-                        // Outcomes numéro 3 du match C
                         for (const coteC of matchC) {
-                            const combined = coteA * coteB * coteC;
-
+                            const combined = coteA.odds * coteB.odds * coteC.odds;
                             if (combined >= min && combined <= max) {
                                 result.push({
                                     matches: [i, j, k],
+                                    matchesId: [matchAId, matchBId, matchCId],
+                                    matchesName: [matchAName, matchBName, matchCName],
                                     cotes: [coteA, coteB, coteC],
                                     coteFinale: combined,
                                 });
@@ -43,18 +40,12 @@ self.onmessage = (event) => {
     }
 
     result.sort((a, b) => a.coteFinale - b.coteFinale);
-    self.postMessage(result);
+    const paginated = result.slice(start, start + limit);
 
-    /** exmple d'Utilisation
-    // @ts-ignore
-    const worker = new Worker(new URL('./workers/tripletWorker.ts', import.meta.url), {
-    type: 'module',
-        });
-    worker.postMessage({ matches, min, max });
-
-    worker.onmessage = (event) => {
-    };
-  }, []); */
+    self.postMessage({
+        total: result.length, // pour afficher le nombre total a utiliser dans la pagination
+        data: paginated,
+    });
 };
 
 export { };

@@ -1,5 +1,5 @@
 import { Outcome } from "interfaces/betting";
-import React from "react";
+import React, { useState } from "react";
 
 interface BettingSectionProps {
   p1: string;
@@ -12,6 +12,8 @@ const BettingSection: React.FC<BettingSectionProps> = ({
   p2,
   outcomes,
 }) => {
+  const [selected, setSelected] = useState<number | null>(null);
+
   return (
     <div className="w-full mt-2 p-2 pb-3">
       <div className="text-center m-auto">
@@ -28,12 +30,25 @@ const BettingSection: React.FC<BettingSectionProps> = ({
           {outcomes.map((outcome, index) => (
             <div
               key={outcome.outcomeId}
+              onClick={() => setSelected(selected === index ? null : index)}
               className={`${
                 outcomes.length === 2 ? "w-[45%]" : "w-[30%]"
-              } min-h-[60px] flex flex-col justify-between rounded-xl bg-grey text-center text-[12px] p-1 hover:bg-red active:bg-red hover:text-white active:text-white group`}
+              } min-h-[60px] flex flex-col justify-between rounded-xl text-center text-[12px] p-1 cursor-pointer group
+                ${
+                  selected === index
+                    ? "bg-red text-white"
+                    : "bg-grey text-black"
+                }
+              `}
             >
-              <div className="break-words ">{outcome.label}</div>
-              <div className="text-darkRed font-extrabold text-[20px] group-hover:text-white group-active:text-white">{outcome.odds}</div>
+              <div className="break-words">{outcome.label}</div>
+              <div
+                className={`text-darkRed font-extrabold text-[20px] ${
+                  selected === index ? "text-white" : ""
+                }`}
+              >
+                {outcome.odds}
+              </div>
             </div>
           ))}
         </div>

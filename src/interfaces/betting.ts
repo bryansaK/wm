@@ -20,7 +20,7 @@ export interface Betting {
 
 export interface Filters {
   sport?: string;
-  pagination? : number;
+  pagination?: number;
   desc?: boolean;
   search?: string;
   country?: string;
@@ -37,4 +37,12 @@ export interface BettingContextType {
   bettingData: Betting[];
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+}
+
+export interface filteredMatches {
+  matchesId : [number, number, number]
+  matchesName: [string, string, string]
+  matches: [number, number, number];
+  cotes: [number, number, number];
+  coteFinale: number;
 }

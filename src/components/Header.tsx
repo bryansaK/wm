@@ -79,7 +79,7 @@ const Header: React.FC = () => {
           onClick={() => {
             bettingData?.setFilters((prev) => ({
               ...prev,
-              isActive: !bettingData?.filters.isActive,
+              isActive: !prev.isActive,
             }));
           }}
         >

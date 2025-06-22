@@ -9,7 +9,7 @@ self.onmessage = (event) => {
 
     for (let i = 0; i < totalMatches - 2; i++) {
         for (let j = i + 1; j < totalMatches - 1; j++) {
-            for (let k = i + 2; k < totalMatches; k++) {
+            for (let k = j + 1; k < totalMatches; k++) {
                 const matchA = matches[i].outcomes;
                 const matchB = matches[j].outcomes;
                 const matchC = matches[k].outcomes;
@@ -28,7 +28,7 @@ self.onmessage = (event) => {
                                     matches: [i, j, k],
                                     matchesId: [matchAId, matchBId, matchCId],
                                     matchesName: [matchAName, matchBName, matchCName],
-                                    cotes: [coteA, coteB, coteC],
+                                    cotes: [coteA.odds, coteB.odds, coteC.odds],
                                     coteFinale: combined,
                                 });
                             }

@@ -14,6 +14,7 @@ interface CardProps {
   p1: string;
   p2: string;
   date: string;
+  defaultSelected?: number;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -25,6 +26,7 @@ const Card: React.FC<CardProps> = ({
   p1,
   p2,
   date,
+  defaultSelected,
 }) => {
   return (
     <div className="flex">
@@ -54,7 +56,7 @@ const Card: React.FC<CardProps> = ({
             </div>
             <div className="mr-3 mt-1">{formatRelativeDate(date)}</div>
           </div>
-          <BettingSection p1={p1} p2={p2} outcomes={outcomes} />
+          <BettingSection p1={p1} p2={p2} outcomes={outcomes}  defaultSelected={defaultSelected}/>
         </div>
       </div>
       <div className="flex flex-1"></div>

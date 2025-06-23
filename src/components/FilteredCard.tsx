@@ -5,6 +5,8 @@ import { filteredMatches, Outcome } from "interfaces/betting";
 import BettingSection from "./BettingSection";
 import { formatRelativeDate } from "utils/dateUtils";
 import SummarySection from "./SummarySection";
+import Card from "./Card";
+import { GetMatchById } from "utils/bettingUtils";
 
 interface FilteredCardProps {
   data: filteredMatches;
@@ -58,20 +60,34 @@ const FilteredCard: React.FC<FilteredCardProps> = ({ data }) => {
       </div>
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-xl p-6 shadow-lg transform transition-all duration-300 scale-100">
+          <div className="bg-white rounded-xl p-6 shadow-lg transform transition-all duration-300 scale-100 w-[90%]">
             {/* Bouton de fermeture */}
             <button
               onClick={() => setShowPopup(false)}
-              className="absolute top-2 right-4 text-gray-500 text-xl"
+              className="absolute top-2 right-4 text-red text-xl"
             >
               ✕
             </button>
 
             {/* Tes 3 composants custom ici */}
-            <div className="space-y-4 mt-4">
-              <p>b</p>
-              <p>c</p>
-              <p>l</p>
+            <div className="space-y-4 mt-3">
+              {data.matchesId.map((matchId, index) => {
+                const match = GetMatchById(matchId);
+                return (
+                  <div>
+                    <Card
+                      date={match.startDate}
+                      outcomes={match.outcomes}
+                      p1={match.competitor1Name}
+                      p2={match.competitor2Name}
+                      tournamentName={match.tournamentName}
+                      flagIcon={match.flag}
+                      isTop={match.hot}
+                      defaultSelected={data.matches[index]}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

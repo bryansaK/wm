@@ -20,12 +20,15 @@ self.onmessage = (event) => {
                 const matchBName = matches[j].tournamentName;
                 const matchCName = matches[k].tournamentName;
                 for (const coteA of matchA) {
+                    const indexA = matchA.indexOf(coteA);
                     for (const coteB of matchB) {
+                        const indexB = matchB.indexOf(coteB);
                         for (const coteC of matchC) {
+                            const indexC = matchC.indexOf(coteC);
                             const combined = coteA.odds * coteB.odds * coteC.odds;
                             if (combined >= min && combined <= max) {
                                 result.push({
-                                    matches: [i, j, k],
+                                    matches: [indexA, indexB, indexC],
                                     matchesId: [matchAId, matchBId, matchCId],
                                     matchesName: [matchAName, matchBName, matchCName],
                                     cotes: [coteA.odds, coteB.odds, coteC.odds],

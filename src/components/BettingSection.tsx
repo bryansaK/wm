@@ -1,19 +1,20 @@
 import { Outcome } from "interfaces/betting";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface BettingSectionProps {
   p1: string;
   p2: string;
   outcomes: Outcome[];
+  defaultSelected?: number;
 }
 
 const BettingSection: React.FC<BettingSectionProps> = ({
   p1,
   p2,
   outcomes,
+  defaultSelected,
 }) => {
   const [selected, setSelected] = useState<number | null>(null);
-
   return (
     <div className="w-full mt-2 p-2 pb-3">
       <div className="text-center m-auto">
@@ -35,7 +36,7 @@ const BettingSection: React.FC<BettingSectionProps> = ({
                 outcomes.length === 2 ? "w-[45%]" : "w-[30%]"
               } min-h-[60px] flex flex-col justify-between rounded-xl text-center text-[12px] p-1 cursor-pointer group
                 ${
-                  selected === index
+                  selected === index || defaultSelected === index
                     ? "bg-red text-white"
                     : "bg-grey text-black"
                 }

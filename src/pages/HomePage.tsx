@@ -3,7 +3,7 @@ import Card from "components/Card";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Betting, filteredMatches } from "interfaces/betting";
-import { imagesFlag, imagesSport } from "interfaces/enum";
+import { imagesFlag, imagesSport, logo, money } from "interfaces/enum";
 import React, { useContext, useEffect, useState } from "react";
 import FilteredCard from "components/FilteredCard";
 
@@ -86,6 +86,16 @@ const HomePage: React.FC = () => {
                     outcomes={elem.outcomes}
                     p1={elem.competitor1Name}
                     p2={elem.competitor2Name}
+                    p1flag={
+                      elem.competitor1Flag
+                        ? imagesFlag[elem.competitor1Flag]
+                        : money["MONEY"]
+                    }
+                    p2flag={
+                      elem.competitor2Flag
+                        ? imagesFlag[elem.competitor2Flag]
+                        : money["MONEY"]
+                    }
                   />
                 </div>
               ))}

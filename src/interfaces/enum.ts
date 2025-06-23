@@ -2,7 +2,10 @@
 import Soccer from "../assets/sports/Soccer.png";
 import IceHockey from "../assets/sports/IceHockey.png";
 import Basketball from "../assets/sports/Basketball.png";
-import Tennis from "../assets/sports/Tennis.png"
+import Tennis from "../assets/sports/Tennis.png";
+
+import LOGO from "../assets/logo.png";
+import MONEY from '../assets/money.png'
 
 // Import des images de sports et des drapeaux
 import AT from "../assets/flags/AT.png";
@@ -29,6 +32,13 @@ import RO from "../assets/flags/RO.png";
 import TR from "../assets/flags/TR.png";
 import US from "../assets/flags/US.png";
 
+export const logo : Record<string, string> = {
+    LOGO
+}
+
+export const money : Record<string, string> = {
+    MONEY
+}
 
 export enum CardLabel {
     TOP = "TOP PARIS 🔥",

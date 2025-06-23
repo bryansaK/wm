@@ -79,6 +79,7 @@ const Header: React.FC = () => {
           onClick={() => {
             bettingData?.setFilters((prev) => ({
               ...prev,
+              pagination: 0,
               isActive: !prev.isActive,
             }));
           }}

@@ -7,6 +7,7 @@ import { Betting, BettingContextType, Filters } from "interfaces/betting";
 import bettingData from "./json/sample-betting.json";
 import Header from "components/Header";
 import Navbar from "components/NavBar";
+import ReadmePage from "pages/ReadmePage";
 
 export const BettingContext = createContext<BettingContextType | null>(null);
 
@@ -28,7 +29,7 @@ function App() {
         <Header></Header>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/readme" />
+          <Route path="/readme" element={<ReadmePage></ReadmePage>} />
         </Routes>
         <Navbar></Navbar>
       </div>

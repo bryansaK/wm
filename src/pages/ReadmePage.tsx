@@ -237,7 +237,7 @@ const ReadmePage = () => {
       <Section delay={1.2}>
         <h2 className="text-2xl font-semibold mb-2">Résumer</h2>
         <p className="text-lg leading-relaxed">
-          Un projet propre, modulaire, avec des animations, une navigation
+          Un projet modulaire, avec des animations, une navigation
           fluide, et un code qui se maintient facilement et scalable.
         </p>
       </Section>

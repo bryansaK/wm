@@ -23,11 +23,6 @@ Utilisation de mui pour les icons
 Framer Motion:
 Utiliser pour les animations
 
-# Architecture
-
-# Optimisation
-
-# Bonus
 
 # ne pas oublier de convertir les png en tiny png et d'ajouet les commentarires par rapport au fonts + expliquer le date Utils
 

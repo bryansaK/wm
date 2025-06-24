@@ -24,7 +24,7 @@ const ReadmePage = () => {
         className="text-4xl font-bold text-center text-red-600 mb-4 opacity-0 animate-fadeInUp"
         style={{ animationFillMode: "forwards", animationDelay: "0s" }}
       >
-        Bienvenue sur le ReadMe
+        ReadMe
       </h1>
 
       <Section delay={0.3}>
@@ -61,9 +61,9 @@ const ReadmePage = () => {
       <Section delay={0.6}>
         <h2 className="text-2xl font-semibold mb-2">TypeScript ?</h2>
         <p className="text-lg leading-relaxed">
-          Évite de faire n’importe quoi. Types clairs, erreurs à compilation,
-          meilleure autocomplétion… ça change tout quand ton projet grossit et
-          surtout quand de nouveaux dev arrivent.
+          Types clairs, erreurs à compilation, meilleure autocomplétion meilleur
+          scabalité quand ton projet grossit et surtout quand de nouveaux dev
+          arrivent.
         </p>
       </Section>
 
@@ -172,22 +172,73 @@ const ReadmePage = () => {
           slide quand tu scrolles. C’est fluide, moderne, et très facile à
           écrire.
         </p>
+      </Section>
 
+      <Section>
+        <h3 className="text-xl font-semibold mb-2">
+          <strong>
+            <a
+              href="https://developer.mozilla.org/fr/docs/Web/API/Web_Workers_API/Using_web_workers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+              Web Worker – Algo de filtrage :
+            </a>
+          </strong>
+        </h3>
         <p className="text-lg leading-relaxed mt-4">
-          <strong>Avantages</strong> : super rapide, pas de blocage visuel, plus
-          propre côté code.
-          <br />
-          <strong>Inconvénients</strong> : un peu plus complexe à mettre en
-          place, et faut penser à bien organiser les messages entre le Worker et
-          l'app.
+          Cet algo tourne dans un <strong>Web Worker</strong> (donc en
+          parallèle, sans bloquer l’UI) et sert à filtrer toutes les
+          combinaisons possibles de
+          <strong>3 matchs différents</strong> dans une liste.
         </p>
+        <p className="text-lg leading-relaxed mt-4">
+          Pour chaque trio de matchs, il teste toutes les cotes possibles entre
+          eux, calcule leur produit (coteA × coteB × coteC), et garde celles
+          dont la valeur est comprise entre{" "}
+          <code className="bg-gray-100 px-1">min</code> et
+          <code className="bg-gray-100 px-1">max</code>. Ensuite, il trie les
+          résultats (de la plus petite à la plus grande cote finale) et retourne
+          une pagination avec seulement les{" "}
+          <strong>20 premiers résultats</strong> (ou plus selon
+          <code className="bg-gray-100 px-1">limit</code>).
+        </p>
+      </Section>
+      <Section delay={1.6}>
+        <h2 className="text-2xl font-semibold mb-2">Bonus</h2>
+        <ul className="list-disc ml-6 text-lg space-y-2">
+          <li>
+            Ajout d'une{" "}
+            <strong>popup pour les détails des paris composés</strong>, avec une
+            animation de <strong>scale fluide</strong> pour rendre l’affichage
+            dynamique et agréable.
+          </li>
+          <li>
+            <strong>Animation d’apparition des drapeaux</strong> (flags) lors
+            d’un clic sur une cote pour enrichir l’expérience utilisateur.
+          </li>
+          <li>
+            <strong>Animation des résultats en live</strong> en fonction des
+            filtres appliqués : quand tu modifies les valeurs de filtres, les
+            résultats s’actualisent de manière fluide.
+          </li>
+          <li>
+            <strong>Ajout d’une pagination</strong> pour afficher les résultats
+            par lots, sans surcharger l’écran.
+          </li>
+          <li>
+            <strong>Ajout d’élément par défault </strong> si aucune information trouvé dans le json
+          </li>
+        </ul>
+        <p>Pour les devs: {"j\'ai laisser des commentaires dans la plupart des fichiers pour la compréhension"}</p>
       </Section>
 
       <Section delay={1.2}>
         <h2 className="text-2xl font-semibold mb-2">Résumer</h2>
         <p className="text-lg leading-relaxed">
-          Un projet propre, modulaire, avec des animations, une
-          navigation fluide, et un code qui se maintient facilement et scalable.
+          Un projet propre, modulaire, avec des animations, une navigation
+          fluide, et un code qui se maintient facilement et scalable.
         </p>
       </Section>
     </div>

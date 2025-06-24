@@ -10,6 +10,7 @@ interface BettingSectionProps {
   defaultSelected?: number;
   p1Flag?: string;
   p2Flag?: string;
+  canSelect: boolean;
 }
 
 const BettingSection: React.FC<BettingSectionProps> = ({
@@ -19,9 +20,10 @@ const BettingSection: React.FC<BettingSectionProps> = ({
   defaultSelected,
   p1Flag,
   p2Flag,
+  canSelect,
 }) => {
-  const [showFlag, setShowFlag] = useState(false);
-  const [selected, setSelected] = useState<number | null>(null);
+  const [showFlag, setShowFlag] = useState(false); // Affichage du drapeau
+  const [selected, setSelected] = useState<number | null>(null); // Stocke l'indice de l'option sélectionnée
   return (
     <div className="w-full mt-2 p-2 pb-3">
       <div className="text-center m-auto">
@@ -39,8 +41,10 @@ const BettingSection: React.FC<BettingSectionProps> = ({
             <div
               key={outcome.outcomeId}
               onClick={() => {
-                setSelected(selected === index ? null : index);
-                setShowFlag(true);
+                if (canSelect) {
+                  setSelected(selected === index ? null : index);
+                  setShowFlag(true);
+                }
               }}
               className={`${
                 outcomes.length === 2 ? "w-[45%]" : "w-[30%]"
@@ -61,6 +65,7 @@ const BettingSection: React.FC<BettingSectionProps> = ({
               >
                 {outcome.odds}
               </div>
+               {/* Animation du drapeau avec Framer Motion */}
               <AnimatePresence>
                 {p1Flag && showFlag && selected === index && (
                   <motion.img

@@ -12,7 +12,6 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    // utilisation de header pour la seo
     <div className="fixed bottom-0 z-50 w-full flex flex-row items-center bg-white border-t-2  overflow-hidden p-2">
       <div className="flex-1 flex flex-col justify-center items-center" onClick={() => {navigate("/")}}>
         <img src={location.pathname === '/' ? homeActif : homeInactif} alt="home" className="h-8 w-auto" />

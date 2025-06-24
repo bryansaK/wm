@@ -26,12 +26,13 @@ const HomePage: React.FC = () => {
     let filteredData = bettingData.bettingData;
     if (bettingData.filters.isActive) {
       setIsLoading(true);
-      // Lancer le worker ici
+      // Lancer le worker ici 
       // @ts-ignore
       const worker = new Worker(
         new URL("../workers/algo.ts", import.meta.url),
         { type: "module" }
       );
+      //envoie du message au worker
       worker.postMessage({
         matches: bettingData.bettingData.slice(0, 20),
         min: bettingData.filters.minCote,
@@ -96,11 +97,13 @@ const HomePage: React.FC = () => {
                         ? imagesFlag[elem.competitor2Flag]
                         : money["MONEY"]
                     }
+                    canSelect
                   />
                 </div>
               ))}
           </>
         )}
+        {/** Component pagination qui s'adapate selon la data */}
         <Stack spacing={2} className="items-center p-3">
           <Pagination
             count={

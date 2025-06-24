@@ -13,18 +13,16 @@ interface FilteredCardProps {
 }
 
 const FilteredCard: React.FC<FilteredCardProps> = ({ data }) => {
-  useEffect(() => {
-    console.log(data);
-  });
   const [showPopup, setShowPopup] = useState(false);
 
   return (
     <div className="flex">
       <div className="w-[94%] lg:w-[30%] min-h-[100px]  m-auto shadow rounded-3xl">
         {" "}
-        {/**ne pas toucher aus tyle ici pas mettre de pb */}
+        {/**ne pas toucher au style ici pas mettre de pb */}
         <div
-          className={`w-full min-h-[100px] rounded-3xl  bg-white shadow-lg relative pb-2`}
+          className={`w-full min-h-[100px] rounded-3xl  bg-white shadow-lg relative pb-2 cursor-pointer group
+    transition-transform duration-200 ease-in-out transform hover:scale-105`}
         >
           <div className="flex items-center justify-between pb-2">
             <div className="mt-2">
@@ -58,10 +56,11 @@ const FilteredCard: React.FC<FilteredCardProps> = ({ data }) => {
           </div>
         </div>
       </div>
+
+      {/**Partie popup */}
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl p-6 shadow-lg transform transition-all duration-300 scale-100 w-[90%]">
-            {/* Bouton de fermeture */}
             <button
               onClick={() => setShowPopup(false)}
               className="absolute top-2 right-4 text-red text-xl"
@@ -69,10 +68,9 @@ const FilteredCard: React.FC<FilteredCardProps> = ({ data }) => {
               ✕
             </button>
 
-            {/* Tes 3 composants custom ici */}
             <div className="space-y-4 mt-3">
               {data.matchesId.map((matchId, index) => {
-                const match = GetMatchById(matchId);
+                const match = GetMatchById(matchId); // Récupération des matchs via l'id
                 return (
                   <div>
                     <Card
@@ -84,6 +82,7 @@ const FilteredCard: React.FC<FilteredCardProps> = ({ data }) => {
                       flagIcon={match.flag}
                       isTop={match.hot}
                       defaultSelected={data.matches[index]}
+                      canSelect={false}
                     />
                   </div>
                 );

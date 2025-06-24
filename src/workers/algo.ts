@@ -2,11 +2,13 @@ import { filteredMatches } from "interfaces/betting";
 
 /* eslint-disable no-restricted-globals */
 self.onmessage = (event) => {
+    // Récupération des données envoyées deouis hompage.tsx (voir dans le useEffect)
     const { matches, min, max, start = 0, limit = 20 } = event.data;
     const result: filteredMatches[] = [];
 
     const totalMatches = matches.length;
 
+     // Boucle sur toutes les combinaisons possibles de 3 matchs différents
     for (let i = 0; i < totalMatches - 2; i++) {
         for (let j = i + 1; j < totalMatches - 1; j++) {
             for (let k = j + 1; k < totalMatches; k++) {
@@ -19,6 +21,8 @@ self.onmessage = (event) => {
                 const matchAName = matches[i].tournamentName;
                 const matchBName = matches[j].tournamentName;
                 const matchCName = matches[k].tournamentName;
+
+                 // Boucle sur toutes les cotes des matchs
                 for (const coteA of matchA) {
                     const indexA = matchA.indexOf(coteA);
                     for (const coteB of matchB) {

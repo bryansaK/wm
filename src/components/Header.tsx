@@ -4,12 +4,14 @@ import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import { MoneyBonus } from "./Money";
 import { Slider } from "@mui/material";
 import { BettingContext } from "App";
+import { useNavigate } from "react-router-dom";
 // Component du Header (Logo + filtre + search inc)
 
 const Header: React.FC = () => {
   const bettingData = useContext(BettingContext);
   const [filterIsActive, setFilterIsActive] = useState<boolean>(false);
 
+  const navigate = useNavigate();
   const handleCoteSlider = (firstValue: number, secondValue: number): void => {
     bettingData?.setFilters((prev) => ({
       ...prev,
@@ -31,13 +33,22 @@ const Header: React.FC = () => {
           />
         </div>
         <div className="flex-1 flex justify-center items-center h-12">
-          <img src={logo} alt="Logo" className="h-full w-auto" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-full w-auto cursor-pointer"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
         </div>
         <div className="flex-1"></div>
       </div>
+
+      {/**Partie filtre */}
       <div
         className={`
-    border-t-2 mt-1 overflow-hidden transition-all duration-300 ease-in-out
+    border-t-2 mt-1 overflow-hidden transition-all duration-300 ease-in-out flex flex-col items-center
     ${
       filterIsActive
         ? "opacity-100 translate-y-0 max-h-[400px] pointer-events-auto"
@@ -45,15 +56,14 @@ const Header: React.FC = () => {
     }
   `}
       >
-        <h2>Filtres:</h2>
-        <div className="p-2 w-[50%] ml-2 mt-2">
+        <h2 className="w-full text-left">Filtres :</h2>
+        <div className="p-2 w-[60%] ml-2 mt-2">
           <div className="flex items-center justify-between">
             <span className="font-semibold">
               Paris combinés: {bettingData?.filters.minCote} -{" "}
               {bettingData?.filters.maxCote}
             </span>
           </div>
-          {/**penser a ajouter deux input pour saisir manuellement les cotes */}
           <Slider
             step={0.01}
             color="error"

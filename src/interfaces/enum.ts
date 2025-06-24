@@ -32,6 +32,8 @@ import RO from "../assets/flags/RO.png";
 import TR from "../assets/flags/TR.png";
 import US from "../assets/flags/US.png";
 
+//Permet de charger dynamiquement les images via les obj + key exemple : imagesSport[AT] = return l'image AT
+
 export const logo : Record<string, string> = {
     LOGO
 }

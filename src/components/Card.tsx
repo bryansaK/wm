@@ -17,6 +17,7 @@ interface CardProps {
   defaultSelected?: number;
   p1flag?: string;
   p2flag?: string;
+  canSelect: boolean;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -31,24 +32,27 @@ const Card: React.FC<CardProps> = ({
   defaultSelected,
   p1flag,
   p2flag,
+  canSelect,
 }) => {
   return (
     <div className="flex">
       <div className="flex flex-1"></div>
-      <div className="w-[94%] lg:w-[30%] min-h-[100px]  m-auto shadow rounded-3xl ">
+      <div className="w-[94%] lg:w-[30%] min-h-[100px]  m-auto shadow rounded-3xl">
         {isTop && (
           <div className="w-[100%] bg-yellow text-black justify-center items-center text-center font-extrabold p-1 pb-6  rounded-t-3xl text-lg shadow-lg">
             {CardLabel.TOP}
           </div>
         )}
         <div
-          className={`w-full min-h-[100px] rounded-3xl  bg-white ${
+          className={`w-full min-h-[100px] rounded-3xl bg-white cursor-pointer group
+    transition-transform duration-200 ease-in-out transform hover:scale-105 ${
             isTop ? "-mt-5 z-1" : ""
           } shadow-lg relative`}
         >
           <div className="flex items-center justify-between">
             <div className="mt-2">
               <div className="flex items-center">
+                  {/**Section a gauche avec le drapeau et le l'icone de sport */}
                 <SmallSection
                   sportIcon={sportsIcon ? sportsIcon : null}
                   flagIcon={flagIcon ? flagIcon : null}
@@ -60,7 +64,15 @@ const Card: React.FC<CardProps> = ({
             </div>
             <div className="mr-3 mt-1">{formatRelativeDate(date)}</div>
           </div>
-          <BettingSection p1={p1} p2={p2} outcomes={outcomes}  defaultSelected={defaultSelected} p1Flag={p1flag} p2Flag={p2flag}/>
+          <BettingSection
+            p1={p1}
+            p2={p2}
+            outcomes={outcomes}
+            defaultSelected={defaultSelected}
+            p1Flag={p1flag}
+            p2Flag={p2flag}
+            canSelect={canSelect}
+          />
         </div>
       </div>
       <div className="flex flex-1"></div>

@@ -14,8 +14,7 @@ React router dom:
 React Router DOM permet de gérer la navigation entre différentes pages dans une application React, sans recharger la page.
 
 Tailwind:
-Cela évite de multiplier les fichiers CSS, réduit les risques de conflits de noms de classes, et rend le code plus lisible et maintenable + classe utilitaires rapide 
-// ne pas oublier de mettre comment ajouter les couleurs perso
+Cela évite de multiplier les fichiers CSS, réduit les risques de conflits de noms de classes, et rend le code plus lisible et maintenable + classe utilitaires rapide
 
 MUI:
 Utilisation de mui pour les icons
@@ -24,6 +23,6 @@ Framer Motion:
 Utiliser pour les animations
 
 
-# ne pas oublier de convertir les png en tiny png et d'ajouet les commentarires par rapport au fonts + expliquer le date Utils
+# Pour plus de détail voir la page ReadMe dans le projet
 
 
